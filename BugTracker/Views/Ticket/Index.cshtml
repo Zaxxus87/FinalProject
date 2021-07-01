@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Ticket>
+
+<h2>Tickets</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Submitted By</th>
+        <th>Assigned To</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Project</th>
+        <th>Description</th>
+    </tr>
+
+    @foreach (var ticket in Model)
+    {
+<tr>
+    <td>@ticket.TicketID</td>
+    <td>@ticket.SubmittedBy</td>
+    <td>@ticket.AssignedTo</td>
+    <td>@ticket.Status</td>
+    <td>@ticket.Date</td>
+    <td>@ticket.Project</td>
+    <td>@ticket.Description</td>
+</tr>
+
+    }
+</table>
