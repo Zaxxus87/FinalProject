@@ -8,6 +8,7 @@
         <th>Last Name</th>
         <th>email</th>
         <th>Title</th>
+        <th>Password</th>
     </tr>
 
     @foreach (var user in Model)
@@ -16,8 +17,9 @@
     <td>@user.UserID</td>
     <td>@user.FirstName</td>
     <td>@user.LastName</td>
-    <td>@user.emal</td>
+    <td>@user.email</td>
     <td>@user.Title</td>
+    <td>@user.Password</td>
 </tr>
 
     }

@@ -15,7 +15,8 @@ namespace BugTracker.Models
         public int UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string emal { get; set; }
+        public string email { get; set; }
         public string Title { get; set; }
+        public string Password { get; set; }
     }
 }
