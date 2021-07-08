@@ -9,5 +9,6 @@ namespace BugTracker
     public interface ITicketRepo
     {
         public IEnumerable<Ticket> GetAllTickets();
+       
     }
 }

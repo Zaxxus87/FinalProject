@@ -1,0 +1,14 @@
+﻿@model Users
+
+<h4>Create an account</h4>
+@using (Html.BeginForm("InsertUserToDatabase", "Users", "Post"))
+{
+    <input asp-for="UserID" type="hidden" value="" />
+    <label asp-for="FirstName" class="control-label">FirstName</label>
+    <input type="text" name="FirstName" class="form-control" value="" />
+    <label asp-for="LastName" class="control-label">LastName</label>
+    <input type="text" name="LastName" class="form-control" value="" />
+    <label asp-for="Password" class="control-label">Password</label>
+    <input type="text" name="Password" class="form-control" value="" />
+    <input type="submit" value="Create Account" class="btn btn-primary" />
+}

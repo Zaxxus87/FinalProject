@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BugTracker.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,15 @@ namespace BugTracker.Controllers
         {
             var users = _repo.GetAllUsers();
             return View(users);
+        }
+
+        
+
+        public IActionResult InsertUserToDataBase(Users userToInsert)
+        {
+            _repo.InsertUser(userToInsert);
+
+            return RedirectToAction("Index", "Login");
         }
     }
 }

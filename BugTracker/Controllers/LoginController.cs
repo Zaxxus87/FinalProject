@@ -23,9 +23,9 @@ namespace BugTracker.Controllers
         }
 
         public IActionResult ProcessLogin(Users user)
-         {
+        {
             var userList = _repo.GetAllUsers();
-            if(userList.Any(x => x.FirstName == user.FirstName && x.LastName == user.LastName && x.Password == user.Password))
+            if (userList.Any(x => x.FirstName == user.FirstName && x.LastName == user.LastName && x.Password == user.Password))
             {
                 return View("LoginSuccess", user);
             }
@@ -33,6 +33,11 @@ namespace BugTracker.Controllers
             {
                 return View("LoginFailure", user);
             }
-         }
+        }
+
+        public IActionResult CreateUser()
+        {
+            return View("CreateUser");
+        }
     }
 }

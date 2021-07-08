@@ -9,5 +9,6 @@ namespace BugTracker
     public interface IUsersRepo
     {
         public IEnumerable<Users> GetAllUsers();
+        public void InsertUser(Users userToInsert);
     }
 }
