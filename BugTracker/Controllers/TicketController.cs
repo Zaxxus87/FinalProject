@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BugTracker.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,18 @@ namespace BugTracker.Controllers
         {
             var tickets = _repo.GetAllTickets();
             return View(tickets);
+        }
+
+        public IActionResult InsertTicket()
+        {
+            return View(new Ticket());
+        }
+
+        public IActionResult InsertTicketToDataBase(Ticket ticketToInsert)
+        {
+            _repo.AddTicket(ticketToInsert);
+
+            return RedirectToAction("Index");
         }
     }
 }

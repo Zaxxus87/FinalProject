@@ -25,9 +25,19 @@ namespace BugTracker.Controllers
         public IActionResult ProcessLogin(Users user)
         {
             var userList = _repo.GetAllUsers();
+            
             if (userList.Any(x => x.FirstName == user.FirstName && x.LastName == user.LastName && x.Password == user.Password))
             {
-                return View("LoginSuccess", user);
+                var actualUser = _repo.GetUserByFirstAndLastName(user.FirstName, user.LastName);
+                if (actualUser.Title == "Developer" || actualUser.Title == "Admin")
+                {
+                    return RedirectToAction("Index", "Ticket");
+                }
+                else
+                {
+                    return View("LoginSuccess", user);
+                }
+                
             }
             else
             {

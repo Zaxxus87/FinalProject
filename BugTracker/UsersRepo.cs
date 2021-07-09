@@ -27,5 +27,12 @@ namespace BugTracker
                         new {FirstName = userToInsert.FirstName, Lastname = userToInsert.LastName, Password = userToInsert.Password, 
                             email = $"{userToInsert.FirstName}.{userToInsert.LastName}@email.com", Title = "User"});
         }
+
+        public Users GetUserByFirstAndLastName(String firstName, string lastName)
+        {
+            var title =  _conn.QuerySingle<Users>("Select * from user where FirstName = @FirstName AND LastName = @LastName;",
+                new { FirstName = firstName, LastName = lastName });
+            return title;
+        }
     }
 }

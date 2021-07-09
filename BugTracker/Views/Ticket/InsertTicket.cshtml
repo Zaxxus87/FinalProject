@@ -1,0 +1,19 @@
+﻿@model Ticket
+
+<h2>Create a New Ticket</h2>
+@using (Html.BeginForm("InsertTicketToDataBase", "Ticket", "Post"))
+{
+    <input asp-for="TicketID" type="hidden" value="" />
+
+    <label asp-for="SubmittedBy" class="control-label">Submitted By</label>
+    <input type="number" name="SubmittedBy" class="form-control" value="" />
+
+    <label asp-for="Project" class="control-label">Project</label>
+    <input type="text" name="Project" class="form-control" />
+
+    <label asp-for="Description" class="control-label">Description</label>
+    <input type="text" name="Description" class="form-control" />
+
+
+    <input type="submit" value="Create Ticket" class="btn btn-primary" />
+}

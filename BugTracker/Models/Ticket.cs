@@ -12,10 +12,9 @@ namespace BugTracker.Models
 
         }
         public int TicketID { get; set; }
-        public string SubmittedBy { get; set; }
-        public string AssignedTo { get; set; }
+        public int SubmittedBy { get; set; }
+        public int AssignedTo { get; set; }
         public string Status { get; set; }
-        public DateTime Date { get; set; }
         public string Project { get; set; }
         public string Description { get; set; }
     }
