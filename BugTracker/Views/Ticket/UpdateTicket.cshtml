@@ -1,0 +1,17 @@
+﻿@model Ticket
+
+<h2>Update Ticket @Model.TicketID</h2>
+
+@using (Html.BeginForm("UpdateTicketToDatabase", "Ticket", "Post"))
+{
+    <input asp-for="TicketID" type="hidden" value="@Model.TicketID" />
+
+    <label asp-for="AssignedTo" class="control-label">AssignedTo</label>
+    <input type="number" step = "1.0" name="AssignedTo" class="form-control" value="@Model.AssignedTo" />
+
+    <label asp-for="Status" class="control-label">Status</label>
+    <input type="text" name="Status" class="form-control" value="@Model.Status" />
+
+    <input type="submit" value="Update Ticket" class="btn btn-primary" />
+
+}

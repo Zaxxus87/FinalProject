@@ -33,5 +33,12 @@ namespace BugTracker.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult UpdateTicketToDataBase(Ticket ticket)
+        {
+            _repo.UpdateTicket(ticket);
+
+            return RedirectToAction("ViewTicket", new { id = ticket.TicketID });
+        }
     }
 }

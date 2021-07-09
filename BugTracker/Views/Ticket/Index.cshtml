@@ -19,7 +19,7 @@
                 @foreach (var ticket in Model)
                 {
                     <tr>
-                        <td>@ticket.TicketID</td>
+                        <td><a href=/Ticket/ViewTicket/@ticket.TicketID>@ticket.TicketID</a></td>
                         <td>@ticket.SubmittedBy</td>
                         <td>@ticket.AssignedTo</td>
                         <td>@ticket.Status</td>

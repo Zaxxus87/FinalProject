@@ -1,0 +1,29 @@
+﻿@model Ticket
+
+<h3>Ticket @Model.TicketID Information</h3>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Submitted By</th>
+        <th>Assigned To</th>
+        <th>Status</th>
+        <th>Project</th>
+        <th>Description</th>
+    </tr>
+
+    
+    <tr>
+        <td>@Model.TicketID</td>
+        <td>@Model.SubmittedBy</td>
+        <td>@Model.AssignedTo</td>
+        <td>@Model.Status</td>
+        <td>@Model.Project</td>
+        <td>@Model.Description</td>
+    </tr>
+    
+</table>
+
+<div style="display: block">
+    <a href="/Ticket/UpdateTicket/@Model.TicketID">Update this Ticket</a>
+</div>

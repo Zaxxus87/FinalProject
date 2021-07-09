@@ -35,5 +35,17 @@ namespace BugTracker
             return _conn.QuerySingle<Ticket>("SELECT * FROM Ticket WHERE TicketID = @id",
                 new { id = id });
         }
+
+        public void UpdateTicket (Ticket ticket)
+        {
+            _conn.Execute("UPDATE ticket SET AssignedTo = @AssignedTo, Status = @Status WHERE TicketID = @id",
+                new {AssignedTo = ticket.AssignedTo, Status = ticket.Status, id = ticket.TicketID });
+        }
+
+        public void DeleteTicket (Ticket ticket)
+        {
+            _conn.Execute("",
+                new { });
+        }
     }
 }

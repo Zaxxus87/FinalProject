@@ -11,5 +11,7 @@ namespace BugTracker
         public IEnumerable<Ticket> GetAllTickets();
         public Ticket GetTicket(int id);
         public void AddTicket(Ticket newTicket);
+        public void UpdateTicket(Ticket ticket);
+        public void DeleteTicket(Ticket ticket);
     }
 }
