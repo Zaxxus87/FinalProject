@@ -1,0 +1,14 @@
+﻿@model Users
+
+<h2>Update @Model.FirstName @Model.LastName</h2>
+
+@using (Html.BeginForm("UpdateUserToDatabase", "Users", "Post"))
+{
+    <input asp-for="UserID" type="hidden" value="@Model.UserID" />
+
+    <label asp-for="Title" class="control-label">Title</label>
+    <input type="text" name="Title" class="form-control" value="@Model.Title" />
+
+    <input type="submit" value="Update User" class="btn btn-primary" />
+
+}

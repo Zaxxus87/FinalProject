@@ -3,7 +3,7 @@
             <h2>Tickets</h2>
 
             <div style="display:block">
-                <a href="/Ticket/InsertTicket/">Create a New Product</a>
+                <a href="/Ticket/InsertTicket/">Create a New Ticket</a>
             </div>
 
             <table class="table">
@@ -18,14 +18,14 @@
 
                 @foreach (var ticket in Model)
                 {
-                    <tr>
-                        <td><a href=/Ticket/ViewTicket/@ticket.TicketID>@ticket.TicketID</a></td>
-                        <td>@ticket.SubmittedBy</td>
-                        <td>@ticket.AssignedTo</td>
-                        <td>@ticket.Status</td>
-                        <td>@ticket.Project</td>
-                        <td>@ticket.Description</td>
-                    </tr>
+            <tr>
+                <td><a href=/Ticket/ViewTicket/@ticket.TicketID>@ticket.TicketID</a></td>
+                <td>@ticket.SubmittedByName</td>
+                <td>@ticket.AssignedToName</td>
+                <td>@ticket.Status</td>
+                <td>@ticket.Project</td>
+                <td>@ticket.Description</td>
+            </tr>
 
                 }
             </table>

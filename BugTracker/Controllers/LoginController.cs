@@ -29,9 +29,13 @@ namespace BugTracker.Controllers
             if (userList.Any(x => x.FirstName == user.FirstName && x.LastName == user.LastName && x.Password == user.Password))
             {
                 var actualUser = _repo.GetUserByFirstAndLastName(user.FirstName, user.LastName);
-                if (actualUser.Title == "Developer" || actualUser.Title == "Admin")
+                if (actualUser.Title == "Developer")
                 {
                     return RedirectToAction("Index", "Ticket");
+                }
+                else if (actualUser.Title == "Admin")
+                {
+                    return RedirectToAction("AdminTicket", "Ticket");
                 }
                 else
                 {

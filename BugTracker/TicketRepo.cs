@@ -27,25 +27,49 @@ namespace BugTracker
 
         public IEnumerable<Ticket> GetAllTickets()
         {
-            return _conn.Query<Ticket>("Select * From Ticket;");
+            var users = _conn.Query<Users>("SELECT * From User;");
+            var tickets = _conn.Query<Ticket>("Select * From Ticket;");
+            foreach(Ticket tick in tickets)
+            {
+                foreach(Users user in users)
+                {
+                    if (user.UserID == tick.AssignedTo)
+                        tick.AssignedToName = $"{user.FirstName} {user.LastName}";
+                    if (user.UserID == tick.SubmittedBy)
+                        tick.SubmittedByName = $"{user.FirstName} {user.LastName}";
+                }              
+            }
+
+            return tickets;
         }
 
         public Ticket GetTicket(int id)
         {
-            return _conn.QuerySingle<Ticket>("SELECT * FROM Ticket WHERE TicketID = @id",
+            var ticket = _conn.QuerySingle<Ticket>("SELECT * FROM Ticket WHERE TicketID = @id",
                 new { id = id });
+            var users = _conn.Query<Users>("SELECT * From User;");
+            foreach (Users user in users)
+            {
+                if (user.UserID == ticket.AssignedTo)
+                    ticket.AssignedToName = $"{user.FirstName} {user.LastName}";
+                if (user.UserID == ticket.SubmittedBy)
+                    ticket.SubmittedByName = $"{user.FirstName} {user.LastName}";
+            }
+
+            return ticket;
         }
 
         public void UpdateTicket (Ticket ticket)
         {
-            _conn.Execute("UPDATE ticket SET AssignedTo = @AssignedTo, Status = @Status WHERE TicketID = @id",
-                new {AssignedTo = ticket.AssignedTo, Status = ticket.Status, id = ticket.TicketID });
+            _conn.Execute("UPDATE ticket SET AssignedTo = @assignedTo, Status = @status WHERE TicketID = @id",
+                new {assignedTo = ticket.AssignedTo, status = ticket.Status, id = ticket.TicketID });
         }
 
-        public void DeleteTicket (Ticket ticket)
+        public void DeleteTicket(Ticket ticket)
         {
-            _conn.Execute("",
-                new { });
+            _conn.Execute("DELETE FROM ticket WHERE TicketID = @id",
+                new {id = ticket.TicketID });
         }
+     
     }
 }

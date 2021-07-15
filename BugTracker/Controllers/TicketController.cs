@@ -19,6 +19,20 @@ namespace BugTracker.Controllers
         public IActionResult Index()
         {
             var tickets = _repo.GetAllTickets();
+            foreach(var item in tickets)
+            {
+                _repo.GetTicket(item.TicketID);
+            }
+            return View(tickets);
+        }
+
+        public IActionResult AdminTicket()
+        {
+            var tickets = _repo.GetAllTickets();
+            foreach (var item in tickets)
+            {
+                _repo.GetTicket(item.TicketID);
+            }
             return View(tickets);
         }
 
@@ -34,11 +48,35 @@ namespace BugTracker.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult ViewTicket(int id)
+        {
+            var tick = _repo.GetTicket(id);
+            return View(tick);
+        }
+
+        public IActionResult UpdateTicket(int id)
+        {
+            var tick = _repo.GetTicket(id);
+            if (tick == null)
+            {
+                return View("TicketNotFound");
+            }
+
+            return View(tick);
+        }
+
         public IActionResult UpdateTicketToDataBase(Ticket ticket)
         {
             _repo.UpdateTicket(ticket);
 
             return RedirectToAction("ViewTicket", new { id = ticket.TicketID });
+        }
+
+        public IActionResult DeleteTicket(Ticket ticket)
+        {
+            _repo.DeleteTicket(ticket);
+
+            return RedirectToAction("Index");
         }
     }
 }

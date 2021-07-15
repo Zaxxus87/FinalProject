@@ -17,5 +17,7 @@ namespace BugTracker.Models
         public string Status { get; set; }
         public string Project { get; set; }
         public string Description { get; set; }
+        public string AssignedToName { get; set; }
+        public string SubmittedByName { get; set; }
     }
 }

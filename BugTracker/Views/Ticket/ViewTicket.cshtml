@@ -1,6 +1,6 @@
 ﻿@model Ticket
 
-<h3>Ticket @Model.TicketID Information</h3>
+<h3>@Model.TicketID Information</h3>
 
 <table class="table">
     <tr>
@@ -15,8 +15,8 @@
     
     <tr>
         <td>@Model.TicketID</td>
-        <td>@Model.SubmittedBy</td>
-        <td>@Model.AssignedTo</td>
+        <td>@Model.SubmittedByName</td>
+        <td>@Model.AssignedToName</td>
         <td>@Model.Status</td>
         <td>@Model.Project</td>
         <td>@Model.Description</td>
@@ -27,3 +27,11 @@
 <div style="display: block">
     <a href="/Ticket/UpdateTicket/@Model.TicketID">Update this Ticket</a>
 </div>
+<div style="display: block">
+    @using (Html.BeginForm("DeleteTicket", "Ticket", "Post"))
+    {
+        <input type="hidden" asp-for="TicketID" value="@Model.TicketID" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this ticket" />
+    }
+</div>
+<a asp-action="Index">Back</a>
