@@ -1,0 +1,22 @@
+
+{
+    "region" : "us-west-2",
+    "configuration" : "Debug",
+    "framework"     : "net5.0",
+    "self-contained" : false,
+    "application"    : "BugTracker",
+    "environment"    : "BugTracker-dev",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "basic",
+    "additional-options"   : "\"aws:autoscaling:launchconfiguration,SecurityGroups\"=\"sg-3d560c34,sg-0c3c7f58ffd1b0600\";\"aws:ec2:vpc,Subnets\"=\"subnet-b253b498\";\"aws:ec2:vpc,ELBSubnets\"=\"subnet-b253b498,subnet-07d2bd5a,subnet-2fd36a65,subnet-1d4cd065\"",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.2.4 running .NET Core",
+    "environment-type"     : "LoadBalanced",
+    "loadbalancer-type"    : "application",
+    "cname"                : "bugtracker-dev",
+    "instance-type"        : "t3a.nano",
+    "key-pair"             : "",
+    "health-check-url"     : "/",
+    "instance-profile"     : "aws-elasticbeanstalk-ec2-role",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "proxy-server"         : "nginx"
+}

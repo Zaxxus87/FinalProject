@@ -19,7 +19,7 @@ namespace BugTracker
 
         public void AddTicket(Ticket newTicket)
         {
-            _conn.Execute("INSERT INTO Ticket (SubmittedBy, AssignedTo, Status, Project, Description)" +
+            _conn.Execute("INSERT INTO ticket (SubmittedBy, AssignedTo, Status, Project, Description)" +
                 " VALUES (@SubmittedBy, @AssignedTo, @Status, @Project, @Description);",
                  new { SubmittedBy = newTicket.SubmittedBy, AssignedTo = 0, Status = "Open", 
                      Project = newTicket.Project, Description = newTicket.Description});
@@ -27,8 +27,8 @@ namespace BugTracker
 
         public IEnumerable<Ticket> GetAllTickets()
         {
-            var users = _conn.Query<Users>("SELECT * From User;");
-            var tickets = _conn.Query<Ticket>("Select * From Ticket;");
+            var users = _conn.Query<Users>("SELECT * From user;");
+            var tickets = _conn.Query<Ticket>("Select * From ticket;");
             foreach(Ticket tick in tickets)
             {
                 foreach(Users user in users)
@@ -43,11 +43,24 @@ namespace BugTracker
             return tickets;
         }
 
+        public IEnumerable<string> GetAllVerifiedUsers()
+        {
+            var verifiedUserList = new List<string>();
+            var users = _conn.Query<Users>("SELECT * From user;");
+            foreach (Users user in users)
+            {
+                verifiedUserList.Add($"{user.FirstName} {user.LastName}");
+            }
+            return verifiedUserList;
+        }
+
+        //Need to create a way to find the id based of a first name/last name of a user
+
         public Ticket GetTicket(int id)
         {
-            var ticket = _conn.QuerySingle<Ticket>("SELECT * FROM Ticket WHERE TicketID = @id",
+            var ticket = _conn.QuerySingle<Ticket>("SELECT * FROM ticket WHERE TicketID = @id",
                 new { id = id });
-            var users = _conn.Query<Users>("SELECT * From User;");
+            var users = _conn.Query<Users>("SELECT * From user;");
             foreach (Users user in users)
             {
                 if (user.UserID == ticket.AssignedTo)
@@ -70,6 +83,8 @@ namespace BugTracker
             _conn.Execute("DELETE FROM ticket WHERE TicketID = @id",
                 new {id = ticket.TicketID });
         }
+
+
      
     }
 }

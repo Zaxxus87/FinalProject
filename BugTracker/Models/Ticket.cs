@@ -19,5 +19,6 @@ namespace BugTracker.Models
         public string Description { get; set; }
         public string AssignedToName { get; set; }
         public string SubmittedByName { get; set; }
+        public IEnumerable<string> VerifiedUsers { get; set; }
     }
 }

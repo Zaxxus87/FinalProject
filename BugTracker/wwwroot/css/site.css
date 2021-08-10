@@ -61,6 +61,7 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    background-image: url('Images/GTback.jpg');
 }
 .footer {
   position: absolute;
@@ -71,5 +72,7 @@ body {
 }
 
 #LoginPage {
-    
+    background-image: url('/Images/GTback.jpg');
+    width:100%;
+    height:auto;
 }

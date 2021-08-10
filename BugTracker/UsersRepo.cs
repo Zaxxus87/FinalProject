@@ -37,19 +37,19 @@ namespace BugTracker
 
         public Users GetUser(int id)
         {
-            return _conn.QuerySingle<Users>("SELECT * FROM User WHERE UserID = @id",
+            return _conn.QuerySingle<Users>("SELECT * FROM user WHERE UserID = @id",
                 new { id = id });
         }
 
         public void UpdateUser(Users user)
         {
-            _conn.Execute("UPDATE User SET Title = @title WHERE UserID = @id",
+            _conn.Execute("UPDATE user SET Title = @title WHERE UserID = @id",
              new {title = user.Title, id = user.UserID});
         }
 
         public void DeleteUser(Users user)
         {
-            _conn.Execute("DELETE FROM User WHERE UserID = @id;",
+            _conn.Execute("DELETE FROM user WHERE UserID = @id;",
                                        new { id = user.UserID });
         }
 
