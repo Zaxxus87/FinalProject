@@ -27,7 +27,7 @@ namespace BugTracker
         {
             services.AddScoped<IDbConnection>((s) =>
             {
-                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("aws"));
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("bugtracker"));
                 conn.Open();
                 return conn;
             });
